@@ -327,7 +327,7 @@ def _fwd_bem_linear_collocation_solution(bem):
     # first, add surface geometries
     logger.info("Computing the linear collocation solution...")
     logger.info("    Matrix coefficients...")
-    coeff = _fwd_bem_lin_pot_coeff(bem["surfs"])
+    coeff = _fwd_bem_lin_pot_coeff(bem["surfs"]) # compute the soild angle
     bem["nsol"] = len(coeff)
     logger.info("    Inverting the coefficient matrix...")
     nps = [surf["np"] for surf in bem["surfs"]]
