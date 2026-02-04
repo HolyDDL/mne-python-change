@@ -855,8 +855,8 @@ def _compute_forwards(rr, *, bem, sensors, n_jobs, verbose=None):
 
 def _compute_forwards_openmeeg(rr, *, bem, sensors):
     """Compute the MEG and EEG forward solutions for OpenMEEG."""
-    if len(bem["surfs"]) != 3:
-        raise RuntimeError("Only 3-layer BEM is supported for OpenMEEG.")
+    # if len(bem["surfs"]) != 3:
+    #     raise RuntimeError("Only 3-layer BEM is supported for OpenMEEG.")
     om = _import_openmeeg("compute a forward solution using OpenMEEG")
     hminv = om.SymMatrix(bem["solution"])
     geom = _make_openmeeg_geometry(bem, invert_transform(bem["head_mri_t"]))

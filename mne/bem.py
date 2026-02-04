@@ -370,7 +370,7 @@ def _make_openmeeg_geometry(bem, mri_head_t=None):
             surf = transform_surface_to(surf, "head", mri_head_t, copy=True)
         points, faces = surf["rr"], surf["tris"]
         faces = faces[:, [1, 0, 2]]  # swap faces
-        meshes.append((points, faces))
+        meshes.append((points, faces.astype(np.int64)))
 
     conductivity = bem["sigma"][::-1]
     return om.make_nested_geometry(meshes, conductivity)
